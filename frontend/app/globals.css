@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0a12;
+  --panel: #10101b;
+  --panel-2: #181826;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #ececf5;
+  --muted: #8b8ba6;
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+}
+
+[data-theme="light"] {
+  --bg: #f6f6fb;
+  --panel: #ffffff;
+  --panel-2: #eeeef7;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #16161f;
+  --muted: #6b6b85;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* soft glow behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(600px 400px at 85% -5%, rgba(139, 92, 246, 0.18), transparent 60%),
+    radial-gradient(500px 400px at 5% 105%, rgba(34, 211, 238, 0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.grad {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+.grad-text {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* markdown styling for bot replies */
+.md > * + * { margin-top: 0.75rem; }
+.md p { line-height: 1.7; }
+.md ul { list-style: disc; padding-left: 1.4rem; }
+.md ol { list-style: decimal; padding-left: 1.4rem; }
+.md li + li { margin-top: 0.25rem; }
+.md h1, .md h2, .md h3 { font-weight: 600; margin-top: 1.25rem; }
+.md h1 { font-size: 1.35rem; }
+.md h2 { font-size: 1.15rem; }
+.md a { color: var(--accent-2); text-decoration: underline; }
+.md code { background: var(--panel-2); border-radius: 6px; padding: 0.15rem 0.4rem; font-size: 0.875em; }
+.md pre { background: var(--panel-2); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; overflow-x: auto; }
+.md pre code { background: none; padding: 0; }
+.md blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--muted); }
+.md table { border-collapse: collapse; }
+.md th, .md td { border: 1px solid var(--border); padding: 0.4rem 0.7rem; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
